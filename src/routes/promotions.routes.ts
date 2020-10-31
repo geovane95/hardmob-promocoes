@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import promocoesDB from '../data/promocoes'
+import promocoesDB from '../data/promotions'
 
 
 const promocoesRoutes = Router();
@@ -11,6 +11,5 @@ promocoesRoutes.get('/',(req,res)=>{
 
 })
 
-
-
+console.log("[DEBUG]Criado as rotas de promoções.");
 export default promocoesRoutes;

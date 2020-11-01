@@ -7,6 +7,7 @@ import cors from "cors";
 
 import config from './src/config/config'
 import routes from './src/routes/routes'
+import Jobs from "./src/jobs/Jobs";
 
 const port = config.server.port;
 
@@ -28,5 +29,7 @@ createConnection()
 		app.listen(port, () => {
 			console.log(`Servidor rodando na porta ${port}`)
 		});
+
+		Jobs.execute();
 	})
 	.catch(error => console.log(error));

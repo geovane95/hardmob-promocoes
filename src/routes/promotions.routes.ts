@@ -1,15 +1,14 @@
 import {Router} from 'express';
-import promocoesDB from '../data/promotions'
+import PromotionsController from '../controllers/PromotionsController';
+import { checkJwt } from "../middlewares/checkJwt";
+import { checkRole } from "../middlewares/checkRole";
 
 
 const promocoesRoutes = Router();
 
 
-promocoesRoutes.get('/',(req,res)=>{
+promocoesRoutes.get('/', [checkJwt, checkRole(["ADMIN"])], PromotionsController.getAllPromotions);
 
-  return res.status(200).json(promocoesDB);
-
-})
 
 console.log("[DEBUG]Criado as rotas de promoções.");
 export default promocoesRoutes;

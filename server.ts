@@ -4,7 +4,8 @@ import express from 'express';
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
-
+import cron from 'node-cron';
+ 
 import config from './src/config/config'
 import routes from './src/routes/routes'
 
@@ -25,7 +26,13 @@ createConnection()
 		//Set all routes from routes folder
 		app.use("/", routes);
 
+		//Exemplo
+		cron.schedule("* * * * *", () => console.log("Executando a tarefa a cada 1 minuto"));
+		
+		
 		app.listen(port, () => {
+
+			
 			console.log(`Servidor rodando na porta ${port}`)
 		});
 	})

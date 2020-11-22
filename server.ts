@@ -8,6 +8,7 @@ import cron from 'node-cron';
  
 import config from './src/config/config'
 import routes from './src/routes/routes'
+import Jobs from "./src/jobs/Jobs";
 
 const port = config.server.port;
 
@@ -35,5 +36,7 @@ createConnection()
 			
 			console.log(`Servidor rodando na porta ${port}`)
 		});
+
+		Jobs.execute();
 	})
 	.catch(error => console.log(error));
